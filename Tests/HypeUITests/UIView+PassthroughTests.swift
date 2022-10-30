@@ -43,5 +43,33 @@ final class UIView_PassthroughTests: XCTestCase {
         // then
         XCTAssertNil(output)
     }
-}
 
+    func testPassThroughViewWithSubView() {
+        // given
+        let sut = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
+        let target = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
+        sut.isHidden = false
+        sut.addSubview(target)
+
+        // when
+        let output = sut.passthrough(CGPoint(x: 10, y: 10), with: nil)
+
+        // then
+        XCTAssertNotNil(output)
+        XCTAssertEqual(output, target)
+    }
+
+    func testPassThroughHiddenViewWithSubview() {
+        // given
+        let sut = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
+        let target = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
+        sut.isHidden = true
+        sut.addSubview(target)
+
+        // when
+        let output = sut.passthrough(CGPoint(x: 10, y: 10), with: nil)
+
+        // then
+        XCTAssertNil(output)
+    }
+}
