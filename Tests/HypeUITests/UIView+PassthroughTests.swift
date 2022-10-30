@@ -107,4 +107,58 @@ final class UIView_PassthroughTests: XCTestCase {
         // then
         XCTAssertNil(output)
     }
+
+    func testPassThroughAlphaShownViewWithSubview() {
+        // given
+        let sut = UIView(frame: Constant.defaultFrame)
+        let target = UIView(frame: Constant.defaultFrame)
+        sut.isHidden = false
+        sut.addSubview(target)
+
+        do {
+            // when
+            sut.alpha = 0.1
+            let output = sut.passthrough(CGPoint(x: 10, y: 10), with: nil)
+
+            // then
+            XCTAssertNotNil(output)
+            XCTAssertEqual(output, target)
+        }
+
+        do {
+            // when
+            sut.alpha = 1.0
+            let output = sut.passthrough(CGPoint(x: 10, y: 10), with: nil)
+
+            // then
+            XCTAssertNotNil(output)
+            XCTAssertEqual(output, target)
+        }
+    }
+
+    func testPassThroughAlphaHiddenViewWithSubview() {
+        // given
+        let sut = UIView(frame: Constant.defaultFrame)
+        let target = UIView(frame: Constant.defaultFrame)
+        sut.isHidden = false
+        sut.addSubview(target)
+
+        do {
+            // when
+            sut.alpha = 0.0
+            let output = sut.passthrough(CGPoint(x: 10, y: 10), with: nil)
+
+            // then
+            XCTAssertNil(output)
+        }
+
+        do {
+            // when
+            sut.alpha = 0.01
+            let output = sut.passthrough(CGPoint(x: 10, y: 10), with: nil)
+
+            // then
+            XCTAssertNil(output)
+        }
+    }
 }
