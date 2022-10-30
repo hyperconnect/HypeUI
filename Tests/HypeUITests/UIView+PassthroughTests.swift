@@ -18,36 +18,40 @@ import XCTest
 
 // MARK: - UIView_PassthroughTests
 
-@testable import HyperSwiftUI
+@testable import HypeUI
 final class UIView_PassthroughTests: XCTestCase {
+    enum Constant {
+        static let defaultFrame = CGRect(origin: .zero, size: CGSize(width: 100, height: 100))
+    }
+
     func testPassThroughView() {
         // given
-        let sut = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
+        let sut = UIView(frame: Constant.defaultFrame)
         sut.isHidden = false
-        
+
         // when
         let output = sut.passthrough(CGPoint(x: 10, y: 10), with: nil)
-        
+
         // then
         XCTAssertNil(output)
     }
 
     func testPassThroughHiddenView() {
         // given
-        let sut = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
+        let sut = UIView(frame: Constant.defaultFrame)
         sut.isHidden = true
-        
+
         // when
         let output = sut.passthrough(CGPoint(x: 10, y: 10), with: nil)
-        
+
         // then
         XCTAssertNil(output)
     }
 
     func testPassThroughViewWithSubView() {
         // given
-        let sut = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
-        let target = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
+        let sut = UIView(frame: Constant.defaultFrame)
+        let target = UIView(frame: Constant.defaultFrame)
         sut.isHidden = false
         sut.addSubview(target)
 
@@ -61,9 +65,40 @@ final class UIView_PassthroughTests: XCTestCase {
 
     func testPassThroughHiddenViewWithSubview() {
         // given
-        let sut = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
-        let target = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
+        let sut = UIView(frame: Constant.defaultFrame)
+        let target = UIView(frame: Constant.defaultFrame)
         sut.isHidden = true
+        sut.addSubview(target)
+
+        // when
+        let output = sut.passthrough(CGPoint(x: 10, y: 10), with: nil)
+
+        // then
+        XCTAssertNil(output)
+    }
+
+    func testPassThroughUserInteractionEnabledViewWithSubview() {
+        // given
+        let sut = UIView(frame: Constant.defaultFrame)
+        let target = UIView(frame: Constant.defaultFrame)
+        sut.isHidden = false
+        sut.isUserInteractionEnabled = true
+        sut.addSubview(target)
+
+        // when
+        let output = sut.passthrough(CGPoint(x: 10, y: 10), with: nil)
+
+        // then
+        XCTAssertNotNil(output)
+        XCTAssertEqual(output, target)
+    }
+
+    func testPassThroughUserInteractionDisabledViewWithSubview() {
+        // given
+        let sut = UIView(frame: Constant.defaultFrame)
+        let target = UIView(frame: Constant.defaultFrame)
+        sut.isHidden = false
+        sut.isUserInteractionEnabled = false
         sut.addSubview(target)
 
         // when
