@@ -20,19 +20,6 @@ import UIKit
 
 public final class PassthroughView: UIView {
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        // Refer to:
-        // - [Hit-Testing in iOS](http://smnh.me/hit-testing-in-ios/)
-        guard isUserInteractionEnabled else { return nil }
-        guard isHidden == false else { return nil }
-        guard alpha > 0.01 else { return nil }
-        guard self.point(inside: point, with: event) else { return nil }
-
-        for subview in subviews.reversed() {
-            let p = subview.convert(point, from: self)
-            if let view = subview.hitTest(p, with: event) {
-                return view
-            }
-        }
-        return nil
+        return passthrough(point, with: event)
     }
 }
