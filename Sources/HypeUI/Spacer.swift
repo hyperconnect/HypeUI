@@ -16,10 +16,20 @@
 
 import UIKit
 
-// MARK: - PassthroughView
+// MARK: - Spacer
 
-public class PassthroughView: UIView {
-    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        return passthrough(point, with: event)
+public final class Spacer: PassthroughView {
+    public init() {
+        super.init(frame: .zero)
+
+        setContentHuggingPriority(.fittingSizeLevel, for: .vertical)
+        setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+        setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+    }
+
+    @available(*, deprecated)
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
