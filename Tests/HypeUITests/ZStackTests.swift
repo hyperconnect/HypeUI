@@ -54,4 +54,26 @@ final class ZStackTests: XCTestCase {
         XCTAssertEqual(image.frame, text.frame)
         XCTAssertEqual(image.frame, stack.frame)
     }
+
+    func testZStackWithVStack() {
+        // given
+        let spacer = Spacer()
+
+        // when
+        let sut = ZStack {
+            VStack(spacing: 10) {
+                Image()
+                    .frame(width: 20, height: 20)
+                Text("*****")
+                    .frame(height: 20)
+                spacer
+            }
+        }
+        contentView.addSubviewWithFit(sut)
+        contentView.layoutIfNeeded()
+
+        // then
+        XCTAssertEqual(spacer.frame.minY, 60) // 20 + 10 + 20 + 10
+        XCTAssertEqual(spacer.frame.minX, 0) // Distribution.fill
+    }
 }
