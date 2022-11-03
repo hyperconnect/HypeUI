@@ -19,18 +19,7 @@ import XCTest
 // MARK: - HStackTests
 
 @testable import HypeUI
-final class HStackTests: XCTestCase {
-    var contentView: UIView!
-
-    override func setUpWithError() throws {
-        let viewController = UIViewController()
-        let window = UIWindow()
-        window.addSubview(viewController.view)
-        window.makeKeyAndVisible()
-        contentView = UIView()
-        viewController.view.addSubviewWithFit(contentView)
-        RunLoop.current.run(until: Date())
-    }
+final class HStackTests: XCLayoutTestCase {
 
     func testHStackImageWithText() {
         // given
