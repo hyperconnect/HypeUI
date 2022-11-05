@@ -77,4 +77,28 @@ final class ViewTests: XCLayoutTestCase {
         XCTAssertNotNil(sut.constraints.first { $0.firstAttribute == .top && $0.secondAttribute == .top })
         XCTAssertNotNil(sut.constraints.first { $0.firstAttribute == .bottom && $0.secondAttribute == .bottom })
     }
+
+    func testFrameWidth() {
+        // given
+        var sut = Spacer()
+
+        // when
+        sut = sut.frame(width: 10)
+
+        // then
+        XCTAssertNotNil(sut.constraints.first { $0.firstAttribute == .width && $0.constant == 10 })
+        XCTAssertNil(sut.constraints.first { $0.firstAttribute == .height })
+    }
+
+    func testFrameHeight() {
+        // given
+        var sut = Spacer()
+
+        // when
+        sut = sut.frame(height: 10)
+
+        // then
+        XCTAssertNotNil(sut.constraints.first { $0.firstAttribute == .height && $0.constant == 10 })
+        XCTAssertNil(sut.constraints.first { $0.firstAttribute == .width })
+    }
 }
