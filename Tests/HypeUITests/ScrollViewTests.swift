@@ -68,4 +68,59 @@ final class ScrollViewTests: XCLayoutTestCase {
         XCTAssertEqual(scrollView.frame, contentView.frame)
         XCTAssertGreaterThan(scrollView.contentSize.width, contentView.bounds.size.width)
     }
+
+
+    func testVerticalScrollViewSmallContentSize() {
+        // given
+        let scrollView = ScrollView(.vertical, showsIndicators: false) {
+            VStack(alignment: .center, spacing: 20) {
+                Text()
+                    .frame(height: 100)
+                Image()
+                    .frame(height: 150)
+            }
+        }
+
+        // when
+        contentView.addSubviewWithFit(
+            ZStack {
+                scrollView
+            }
+        )
+        contentView.layoutIfNeeded()
+
+        // then
+        XCTAssertEqual(scrollView.frame, contentView.frame)
+        XCTAssertEqual(scrollView.contentSize, contentView.bounds.size)
+    }
+
+    func testVerticalScrollViewLargeContentSize() {
+        // given
+        let scrollView = ScrollView(.vertical, showsIndicators: false) {
+            VStack(alignment: .center, spacing: 20) {
+                (1...5).map { _ in
+                    HStack(alignment: .center) {
+                        Text()
+                            .frame(height: 100)
+                        Image()
+                            .frame(height: 200)
+                    }
+                }
+            }
+        }
+
+        // when
+        contentView.addSubviewWithFit(
+            ZStack {
+                scrollView
+            }
+        )
+        contentView.layoutIfNeeded()
+
+        // then
+        XCTAssertEqual(scrollView.contentSize.width, contentView.bounds.size.width)
+        XCTAssertEqual(scrollView.frame, contentView.frame)
+        XCTAssertEqual(scrollView.contentSize.height, 200 * 5 + 20 * 4)
+        XCTAssertGreaterThan(scrollView.contentSize.height, contentView.bounds.size.height)
+    }
 }
