@@ -23,10 +23,6 @@ public typealias Button = UIButton
 // MARK: - Button
 
 public extension Button {
-    convenience init(_ image: UIImage) {
-        self.init()
-        self.setImage(image, for: .normal)
-    }
 
     /// Button with action closure.
     /// - Parameter action: Escaping action closure.
