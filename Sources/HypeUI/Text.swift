@@ -21,7 +21,10 @@ public typealias Text = UILabel
 // MARK: - Text
 
 public extension Text {
-    convenience init(_ text: String) {
+
+    /// A view that displays one or more lines of read-only text.
+    /// - Parameter text: (optional) text.
+    convenience init(_ text: String?) {
         self.init()
         self.text = text
     }
