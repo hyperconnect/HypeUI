@@ -127,9 +127,12 @@ Button(action: { // DO SOMETHING ex) reactor action, closure }) {
 ### Text
 
 ```swift
-Text()
+Text("✨")
     .foregroundColor(UIColor.black)
     .font(UIFont.systemFont(ofSize: 14, weight: .regular))
+    .textAligned(.center)
+    .background(.white)
+    .cornerRadius(16)
 ```
 
 ### Image
