@@ -36,4 +36,12 @@ public extension Image {
         self.image = image
         return self
     }
+
+    /// Modify tint color.
+    /// - Parameter tintColor: The first nondefault tint color value in the view’s hierarchy, ascending from and starting with the view itself.
+    /// - Returns: Modified image.
+    func tint(_ tintColor: UIColor?) -> Self {
+        self.tintColor = tintColor
+        return self
+    }
 }
