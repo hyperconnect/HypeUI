@@ -198,3 +198,16 @@ public extension UIView {
         return self
     }
 }
+
+// MARK: - UIStackView
+
+public extension UIStackView {
+
+    /// Modify stack's distribution layout.
+    /// - Parameter distribution: The layout that defines the size and position of the arranged views along the stack view’s axis.
+    /// - Returns: Modified stack view.
+    func distributed(_ distribution: UIStackView.Distribution) -> Self {
+        self.distribution = distribution
+        return self
+    }
+}

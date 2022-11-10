@@ -101,4 +101,32 @@ final class ViewTests: XCLayoutTestCase {
         XCTAssertNotNil(sut.constraints.first { $0.firstAttribute == .height && $0.constant == 10 })
         XCTAssertNil(sut.constraints.first { $0.firstAttribute == .width })
     }
+
+    func testStackDistributedToEqual() {
+        // given
+        let sut = HStack(alignment: .center) {
+            Text("🌺 Hello")
+                .font(UIFont.systemFont(ofSize: 20, weight: .bold))
+            Text("🦄 HypeUI")
+                .font(UIFont.systemFont(ofSize: 16, weight: .regular))
+            ScrollView(.vertical) {
+                Text("Scrolling...")
+                    .font(UIFont.systemFont(ofSize: 14, weight: .heavy))
+            }
+        }
+
+        // when
+        contentView.addSubviewWithFit(
+            HStack(alignment: .center) {
+                VStack(alignment: .center) {
+                    sut.distributed(.fillEqually)
+                }
+            }
+        )
+        sut.layoutIfNeeded()
+
+        // then
+        XCTAssertEqual(Set(sut.subviews.map { $0.bounds.width }).count, 1)
+        XCTAssertEqual(Set(sut.subviews.map { $0.bounds.height }).count, 3)
+    }
 }
