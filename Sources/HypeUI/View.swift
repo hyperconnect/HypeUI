@@ -37,7 +37,7 @@ public extension UIView {
         return self
     }
 
-    /// Sets the priority with which a view resists being made larger than its intrinsic size.
+    /// Sets the priority with which a view resists being made smaller than its intrinsic size.
     /// - Parameter priority: The new priority.
     /// - Returns: Modified view.
     func setHContentCompressionResistance(priority: UILayoutPriority) -> Self {
@@ -45,7 +45,7 @@ public extension UIView {
         return self
     }
 
-    /// Sets the priority with which a view resists being made larger than its intrinsic size.
+    /// Sets the priority with which a view resists being made smaller than its intrinsic size.
     /// - Parameter priority: The new priority.
     /// - Returns: modified view
     func setVContentCompressionResistance(priority: UILayoutPriority) -> Self {
