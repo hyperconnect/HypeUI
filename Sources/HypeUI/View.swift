@@ -105,7 +105,7 @@ public extension UIView {
     /// Modifiy background color.
     /// - Parameter color: An object that stores color data and sometimes opacity.
     /// - Returns: Modified view
-    func background(_ color: UIColor) -> UIView {
+    func background(_ color: UIColor) -> Self {
         self.backgroundColor = color
         return self
     }
@@ -170,7 +170,7 @@ public extension UIView {
     /// Configures whether this view participates in hit test operations.
     /// - Parameter allows: A value type whose instances are either true or false.
     /// - Returns: Modified view.
-    func allowsHitTesting(_ allows: Bool) -> UIView {
+    func allowsHitTesting(_ allows: Bool) -> Self {
         self.isUserInteractionEnabled = allows
         return self
     }
