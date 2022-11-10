@@ -16,7 +16,21 @@ Want to enjoy SwiftUI syntax with UIKit? It's time to use HypeUI 😊
 
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Supported Features](#supported_features)
+    * [View Modifier](#view_modifier)
+    * [Text Modifier](#text_modifier)
+    * [Stack Modifier](#stack_modifier)
+    * [Image Modifier](#image_modifier)
 - [Usage](#usage)
+    * [HStack](#hstack)
+    * [VStack](#vstack)
+    * [ZStack](#zstack)
+    * [Button](#button)
+    * [Text](#text)
+    * [Image](#image)
+    * [ScrollView](#scrollview)
+    * [Behavior](#behavior)
+    * [Spacer](#spacer)
 - [Dependencies](#dependencies)
 
 ## Requirements
@@ -49,17 +63,70 @@ The preferred installation method is with [CocoaPods](https://cocoapods.org). Ad
 pod 'HypeUI'
 ```
 
-|          | Supported Features  |
------------|----------------
-HStack     | ✅
-VStack     | ✅
-ZStack     | ✅
-Button     | ✅
-Text       | ✅
-Image      | ✅
-ScrollView | ✅
-Behavior   | ✅
-Spacer     | ✅
+## Supported Features
+
+|               | Supported Features  |
+----------------|----------------
+HStack          | ✅
+VStack          | ✅
+ZStack          | ✅
+Button          | ✅
+Text            | ✅
+Image           | ✅
+ScrollView      | ✅
+Behavior        | ✅
+Spacer          | ✅
+View Modifier   | ✅
+Text Modifier   | ✅
+Stack Modifier  | ✅
+Image Modifier  | ✅
+
+<a name="view_modifier"></a>
+### View Modifier
+
+| name                           | Description  |
+---------------------------------|----------------
+setHContentHugging               | Sets the priority with which a view resists being made larger than its intrinsic size.
+setVContentHugging               | Sets the priority with which a view resists being made larger than its intrinsic size.
+setHContentCompressionResistance | Sets the priority with which a view resists being made smaller than its intrinsic size.
+setVContentCompressionResistance | Sets the priority with which a view resists being made smaller than its intrinsic size.
+makeRatio                        | Modify the ratio of the size of the view.
+cornerRadius                     | Modify corner radius.
+border                           | Modify border style.
+background                       | Modifiy background color.
+makeContentMode                  | Modify content mode.
+frame                            | Positions this view within an invisible frame with the specified size.
+padding                          | Adds an equal padding amount to specific edges of this view.
+allowsHitTesting                 | Configures whether this view participates in hit test operations.
+masksToBounds                    | Setting sublayers are clipped to the layer’s bounds.
+accessibilityIdentifier          | Uses the string you specify to identify the view.
+
+<a name="text_modifier"></a>
+### Text Modifier
+
+| name                           | Description  |
+---------------------------------|----------------
+font                             | Modify text font.
+foregroundColor                  | Modify foreground color.
+textAligned                      | Modify text alignment
+lineLimit                        | The maximum number of lines that text can occupy in a view.
+lineBreakMode                    | Modify line break mode.
+adjustFontSize                   | Modify adjustsfontsize to fit width
+minimumScaleFactor               | Modify minimum scale factor.
+
+<a name="stack_modifier"></a>
+### Stack Modifier
+
+| name                           | Description  |
+---------------------------------|----------------
+distributed                      | Modify stack's distribution layout.
+
+<a name="image_modifier"></a>
+### Image Modifier
+
+| name                           | Description  |
+---------------------------------|----------------
+tintColor                        | Modify tint color.
 
 ## Usage
 
