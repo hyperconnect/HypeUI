@@ -189,4 +189,12 @@ public extension UIView {
         layer.masksToBounds = masksToBounds
         return self
     }
+
+    /// Uses the string you specify to identify the view.
+    /// - Parameter identifier: A string that identifies the element.
+    /// - Returns: Modified view.
+    func accessibilityIdentifier(_ identifier: String) -> Self {
+        self.accessibilityIdentifier = identifier
+        return self
+    }
 }
