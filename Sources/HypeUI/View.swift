@@ -181,4 +181,12 @@ public extension UIView {
         addSubview(view)
         view.snp.makeConstraints { $0.directionalEdges.equalToSuperview() }
     }
+
+    /// Setting sublayers are clipped to the layer’s bounds.
+    /// - Parameter masksToBounds: A Boolean indicating whether sublayers are clipped to the layer’s bounds.
+    /// - Returns: Modified view.
+    func masksToBounds(_ masksToBounds: Bool) -> Self {
+        layer.masksToBounds = masksToBounds
+        return self
+    }
 }
