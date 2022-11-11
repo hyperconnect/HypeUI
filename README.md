@@ -11,6 +11,8 @@ Want to enjoy SwiftUI syntax with UIKit? It's time to use HypeUI 😊
 🦄 | Easy to use!
 ✈️ | Improve readability and intuitiveness of complex layouts
 🤩 | Have a blast
+⛷ | Customize reusable component, design system
+❄️ | Test with accessibility Identifier
 
 ## Contents
 
@@ -31,6 +33,7 @@ Want to enjoy SwiftUI syntax with UIKit? It's time to use HypeUI 😊
     * [ScrollView](#scrollview)
     * [Behavior](#behavior)
     * [Spacer](#spacer)
+    * [ViewBuildable](#viewbuildable)
 - [Dependencies](#dependencies)
 
 ## Requirements
@@ -76,6 +79,7 @@ Image           | ✅
 ScrollView      | ✅
 Behavior        | ✅
 Spacer          | ✅
+ViewBuildable   | ✅
 View Modifier   | ✅
 Text Modifier   | ✅
 Stack Modifier  | ✅
@@ -244,7 +248,7 @@ ScrollView(.vertical, showsIndicators: false) {
 }
 ```
 
-### @Behavior
+### @Behavior - It's seems like SwiftUI's @State using DynamicLinkable 😎
 
 ```swift
 @Behavior var isLive: Bool = false
@@ -303,6 +307,30 @@ Spacer()
     .frame(width: 10)
 Spacer()
     .frame(height: 20)
+```
+
+### ViewBuildable - Customize UI, Make reusable component and Design System by confirming ViewBuildable protocol.
+
+```swift
+struct ProfileView: ViewBuildable {
+    @Behavior var country: String
+    @Behavior var name: String
+
+    func build() -> UIView {
+        VStack {
+            HStack(alignment: .center, spacing: 12) {
+                Text("")
+                    .linked($country, keyPath: \.text)
+                    .font(UIFont.systemFont(ofSize: 20, weight: .regular))
+                    .accessibilityIdentifier("country")
+                Text("")
+                    .linked($name, keyPath: \.text)
+                    .font(UIFont.systemFont(ofSize: 20, weight: .regular))
+                    .accessibilityIdentifier("name")
+            }
+        }
+    }
+}
 ```
 
 ## Dependencies
