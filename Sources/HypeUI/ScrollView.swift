@@ -31,14 +31,14 @@ public enum Axis {
 /// - Parameters:
 ///   - axis: The scrollable axes of the scroll view.
 ///   - showsIndicators: A value that indicates whether the scroll view displays the scrollable component of the content offset, in a way that’s suitable for the platform.
-///   - content: The content and behavior of the scroll view.
+///   - content: The  buildable content and behavior of the scroll view.
 /// - Returns: A scrollable view.
-public func ScrollView(_ axis: Axis, showsIndicators: Bool = true, content: () -> UIView) -> UIScrollView {
+public func ScrollView(_ axis: Axis, showsIndicators: Bool = true, content: () -> ViewBuildable) -> UIScrollView {
     let scrollView = UIScrollView()
     scrollView.showsVerticalScrollIndicator = showsIndicators
     scrollView.showsHorizontalScrollIndicator = showsIndicators
 
-    let contentView = content()
+    let contentView = content().build()
     scrollView.addSubview(contentView)
     contentView.snp.makeConstraints { maker in
         maker.directionalEdges.equalToSuperview()
