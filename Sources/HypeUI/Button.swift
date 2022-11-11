@@ -34,10 +34,10 @@ public extension Button {
     /// Button with action closure.
     /// - Parameters:
     ///   - action: Escaping action closure.
-    ///   - view: UI for button.
-    convenience init(action: @escaping () -> Void, _ view: () -> UIView) {
+    ///   - view: Buildable view for button.
+    convenience init(action: @escaping () -> Void, _ view: () -> ViewBuildable) {
         self.init()
-        let buttonView = view()
+        let buttonView = view().build()
         _ = rx.tap
             .map { Void() }
             .subscribe(onNext: action)
