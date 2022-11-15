@@ -68,4 +68,9 @@ public extension GradientView {
         self.gradientLayer.endPoint = point
         return self
     }
+
+    func type(_ type: CAGradientLayerType) -> Self {
+        self.gradientLayer.type = type
+        return self
+    }
 }
