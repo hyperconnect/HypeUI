@@ -22,6 +22,9 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 
+## AppCode project setting
+.idea/
+
 ## Obj-C/Swift specific
 *.hmap
 
