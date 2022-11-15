@@ -20,4 +20,16 @@ import UIKit
 
 public struct Gradient {
 
+    /// One color stop in the gradient
+
+    public struct Stop {
+        var color: UIColor
+        var location: CGFloat
+    }
+
+    public let stops: [Stop]
+
+    public init(stops: [Stop]) {
+        self.stops = stops
+    }
 }
