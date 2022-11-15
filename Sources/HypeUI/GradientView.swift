@@ -23,19 +23,7 @@ public class GradientView: UIView {
         return CAGradientLayer.self
     }
 
-    public var startPoint: CGPoint = .zero {
-        didSet {
-            gradientLayer.startPoint = startPoint
-        }
-    }
-
-    public var endPoint: CGPoint = .zero {
-        didSet {
-            gradientLayer.endPoint = endPoint
-        }
-    }
-
-    private var gradientLayer: CAGradientLayer {
+    internal var gradientLayer: CAGradientLayer {
         // swiftlint:disable force_cast
         return layer as! CAGradientLayer
         // swiftlint:enable force_cast
@@ -65,5 +53,19 @@ public class GradientView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - GradientView (Modifier)
+
+public extension GradientView {
+    func startPoint(_ point: UnitPoint) -> Self {
+        self.gradientLayer.startPoint = point
+        return self
+    }
+
+    func endPoint(_ point: UnitPoint) -> Self {
+        self.gradientLayer.endPoint = point
+        return self
     }
 }
