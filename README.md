@@ -23,6 +23,7 @@ Want to enjoy SwiftUI syntax with UIKit? It's time to use HypeUI 😊
     * [Text Modifier](#text_modifier)
     * [Stack Modifier](#stack_modifier)
     * [Image Modifier](#image_modifier)
+    * [ScrollView Modifier](#scrollview_modifier)
 - [Usage](#usage)
     * [HStack](#hstack)
     * [VStack](#vstack)
@@ -33,6 +34,7 @@ Want to enjoy SwiftUI syntax with UIKit? It's time to use HypeUI 😊
     * [ScrollView](#scrollview)
     * [Behavior](#behavior)
     * [Spacer](#spacer)
+    * [LinearGradient](#lineargradient)
     * [ViewBuildable](#viewbuildable)
 - [Dependencies](#dependencies)
 
@@ -79,11 +81,14 @@ Image           | ✅
 ScrollView      | ✅
 Behavior        | ✅
 Spacer          | ✅
+LinearGradient  | ✅
+AlignmentView   | ✅
 ViewBuildable   | ✅
 View Modifier   | ✅
 Text Modifier   | ✅
 Stack Modifier  | ✅
 Image Modifier  | ✅
+ScrollView Modifier  | ✅
 
 <a name="view_modifier"></a>
 ### View Modifier
@@ -104,6 +109,8 @@ padding                          | Adds an equal padding amount to specific edge
 allowsHitTesting                 | Configures whether this view participates in hit test operations.
 masksToBounds                    | Setting sublayers are clipped to the layer’s bounds.
 accessibilityIdentifier          | Uses the string you specify to identify the view.
+overlay                          | Layers the views that you specify in front of this view.
+background                       | Layers the views that you specify behind this view.
 
 <a name="text_modifier"></a>
 ### Text Modifier
@@ -131,6 +138,15 @@ distributed                      | Modify stack's distribution layout.
 | name                           | Description  |
 ---------------------------------|----------------
 tintColor                        | Modify tint color.
+
+<a name="scrollview_modifier"></a>
+### ScrollView Modifier
+
+| name                           | Description  |
+---------------------------------|----------------
+bounces                          | Modify scroll view bounces.
+isPagingEnabled                  | Modify scroll view paging enabled.
+isScrollEnabled                  | Modify scroll view enabled.
 
 ## Usage
 
@@ -309,6 +325,23 @@ Spacer()
     .frame(height: 20)
 ```
 
+### LinearGradient
+```
+ProfileView()
+    .background(
+        LinearGradient(
+            gradient: Gradient(
+                stops: [
+                    Stop(color: UIColor.black, location: 1.0),
+                    Stop(color: UIColor.black, location: 0.2),
+                    Stop(color: UIColor.black, location: 0.0)
+                ]),
+            startPoint: .top,
+            endPoint: .bottom
+        )
+    )
+```
+
 ### ViewBuildable - Customize UI, Make reusable component and Design System by confirming ViewBuildable protocol.
 
 ```swift
@@ -332,6 +365,12 @@ struct ProfileView: ViewBuildable {
     }
 }
 ```
+
+## Main Contributors
+cruz@hpcnt.com
+xeon@hpcnt.com
+owen.j@hpcnt.com
+dough@hpcnt.com
 
 ## Dependencies
 
