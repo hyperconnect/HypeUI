@@ -129,4 +129,58 @@ final class ViewTests: XCLayoutTestCase {
         XCTAssertEqual(Set(sut.subviews.map { $0.bounds.width }).count, 1)
         XCTAssertEqual(Set(sut.subviews.map { $0.bounds.height }).count, 3)
     }
+
+    func testOverlayAlignmentCenter() {
+        // given
+        let sut = Text()
+            .frame(width: 100, height: 100)
+
+        // when
+        contentView.addSubviewWithFit(
+            Text()
+                .frame(width: 500, height: 500)
+                .overlay(alignment: .center, view: sut)
+        )
+        contentView.layoutIfNeeded()
+
+        // then
+        XCTAssertEqual(contentView.center, contentView.convert(CGPoint(x: sut.bounds.midX, y: sut.bounds.midY), from: sut))
+    }
+
+    func testOverlayAlignmentTopLeading() {
+        // given
+        let sut = Text()
+            .frame(width: 100, height: 100)
+
+        // when
+        contentView.addSubviewWithFit(
+            Text()
+                .frame(width: 500, height: 500)
+                .overlay(alignment: .topLeading, view: sut)
+        )
+        contentView.layoutIfNeeded()
+
+        // then
+        XCTAssertEqual(CGRect(x: 0, y: 0, width: 100, height: 100), contentView.convert(sut.bounds, from: sut))
+    }
+
+    func testOverlayAlignmentBottomTrailing() {
+        // given
+        let sut = Text()
+            .frame(width: 100, height: 100)
+
+        // when
+        contentView.addSubviewWithFit(
+            Text()
+                .frame(width: 500, height: 500)
+                .overlay(alignment: .bottomTrailing, view: sut)
+        )
+        contentView.layoutIfNeeded()
+
+        // then
+        let output = contentView.convert(sut.bounds, from: sut)
+        XCTAssertEqual(contentView.frame.maxX - 100, output.minX)
+        XCTAssertEqual(contentView.frame.maxY - 100, output.minY)
+        XCTAssertEqual(CGSize(width: 100, height: 100), output.size)
+    }
 }
