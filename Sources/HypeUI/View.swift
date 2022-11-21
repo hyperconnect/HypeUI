@@ -206,19 +206,7 @@ public extension UIView {
     func overlay(alignment: Alignment = .center, view: ViewBuildable) -> UIView {
         ZStack {
             self
-            HStack(alignment: alignment.horizontalAlignment) {
-                Spacer()
-                    .linked(.just(!alignment.isBottom), keyPath: \.isHidden)
-                VStack(alignment: alignment.verticalAlignment) {
-                    Spacer()
-                        .linked(.just(!alignment.isTrailing), keyPath: \.isHidden)
-                    view.build()
-                    Spacer()
-                        .linked(.just(!alignment.isLeading), keyPath: \.isHidden)
-                }
-                Spacer()
-                    .linked(.just(!alignment.isTop), keyPath: \.isHidden)
-            }
+            AlignmentView(alignment: alignment, view: view)
         }
     }
 }
