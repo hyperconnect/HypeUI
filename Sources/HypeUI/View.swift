@@ -197,6 +197,30 @@ public extension UIView {
         self.accessibilityIdentifier = identifier
         return self
     }
+
+    /// Layers the views that you specify in front of this view.
+    /// - Parameters:
+    ///   - alignment: An alignment in both axes.
+    ///   - view: Buildable view content.
+    /// - Returns: Modified view.
+    func overlay(alignment: Alignment = .center, view: ViewBuildable) -> UIView {
+        ZStack {
+            self
+            HStack(alignment: alignment.horizontalAlignment) {
+                Spacer()
+                    .linked(.just(!alignment.isBottom), keyPath: \.isHidden)
+                VStack(alignment: alignment.verticalAlignment) {
+                    Spacer()
+                        .linked(.just(!alignment.isTrailing), keyPath: \.isHidden)
+                    view.build()
+                    Spacer()
+                        .linked(.just(!alignment.isLeading), keyPath: \.isHidden)
+                }
+                Spacer()
+                    .linked(.just(!alignment.isTop), keyPath: \.isHidden)
+            }
+        }
+    }
 }
 
 // MARK: - UIStackView
