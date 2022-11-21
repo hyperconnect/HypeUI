@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "HypeUI is a implementation of Apple's SwiftUI DSL style based on UIKit"
   s.homepage     = "https://github.com/hyperconnect/HypeUI"
   s.license      = { :type => 'Apache 2.0', :file => "LICENSE" }
-  s.author       = {'Cruz' => 'cruz@hpcnt.com' }
+  s.author       = { 'Cruz' => 'cruz@hpcnt.com', 'Xeon' => 'xeon@hpcnt.com' }
   s.source       = { :git => 'https://github.com/hyperconnect/HypeUI.git', :tag => s.version.to_s }
   s.ios.deployment_target = '12.0'
   s.source_files = 'Sources/**/*.swift'
