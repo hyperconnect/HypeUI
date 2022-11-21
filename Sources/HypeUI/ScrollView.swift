@@ -56,3 +56,15 @@ public func ScrollView(_ axis: Axis, showsIndicators: Bool = true, content: () -
     return scrollView
 }
 // swiftlint:enable identifier_name
+
+// MARK: ScrollView
+
+public extension UIScrollView {
+    /// Modify scroll view bounces.
+    /// - Parameter bounces: A Boolean value that controls whether the scroll view bounces past the edge of content and back again.
+    /// - Returns: Modified scroll view.
+    func bounces(_ bounces: Bool) -> Self {
+        self.bounces = bounces
+        return self
+    }
+}
