@@ -209,6 +209,18 @@ public extension UIView {
             AlignmentView(alignment: alignment, view: view)
         }
     }
+
+    /// Layers the views that you specify behind this view.
+    /// - Parameters:
+    ///   - alignment: An alignment in both axes.
+    ///   - view: Buildable view content.
+    /// - Returns: Modified view.
+    func background(alignment: Alignment = .center, view: ViewBuildable) -> UIView {
+        ZStack {
+            AlignmentView(alignment: alignment, view: view)
+            self
+        }
+    }
 }
 
 // MARK: - UIStackView
