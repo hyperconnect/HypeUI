@@ -67,4 +67,12 @@ public extension UIScrollView {
         self.bounces = bounces
         return self
     }
+
+    /// Modify scroll view paging enabled.
+    /// - Parameter isPagingEnabled: A Boolean value that determines whether paging is enabled for the scroll view.
+    /// - Returns: Modified scroll view.
+    func isPagingEnabled(_ isPagingEnabled: Bool) -> Self {
+        self.isPagingEnabled = isPagingEnabled
+        return self
+    }
 }
