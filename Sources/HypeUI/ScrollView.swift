@@ -75,4 +75,12 @@ public extension UIScrollView {
         self.isPagingEnabled = isPagingEnabled
         return self
     }
+
+    /// Modify scroll view enabled.
+    /// - Parameter isScrollEnabled: A Boolean value that determines whether scrolling is enabled.
+    /// - Returns: Modified scroll view.
+    func isScrollEnabled(_ isScrollEnabled: Bool) -> Self {
+        self.isScrollEnabled = isScrollEnabled
+        return self
+    }
 }
