@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "HypeUI"
-  s.version      = "0.2.0"
+  s.version      = "0.3.0"
   s.summary      = "HypeUI is a implementation of Apple's SwiftUI DSL style based on UIKit"
   s.homepage     = "https://github.com/hyperconnect/HypeUI"
   s.license      = { :type => 'Apache 2.0', :file => "LICENSE" }

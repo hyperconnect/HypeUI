@@ -59,7 +59,7 @@ To integrate HypeUI into your Xcode project using Swift Package Manager, add it 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/hyperconnect/HypeUI", .upToNextMajor(from: "0.2.0"))
+    .package(url: "https://github.com/hyperconnect/HypeUI", .upToNextMajor(from: "0.3.0"))
 ]
 ```
 
