@@ -2,6 +2,9 @@
 🚀 HypeUI is a implementation of Apple's SwiftUI DSL style based on UIKit
 Want to enjoy SwiftUI syntax with UIKit? It's time to use HypeUI 😊
 
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)
+
 |  | Why to use HypeUI?  |
 ---|-----------------
 📱 | Support iOS 12+
