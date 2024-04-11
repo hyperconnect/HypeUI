@@ -25,7 +25,6 @@ Want to enjoy SwiftUI syntax with UIKit? It's time to use HypeUI 😊
     * [View Modifier](#view_modifier)
     * [Text Modifier](#text_modifier)
     * [Stack Modifier](#stack_modifier)
-    * [Image Modifier](#image_modifier)
     * [ScrollView Modifier](#scrollview_modifier)
 - [Usage](#usage)
     * [HStack](#hstack)
@@ -90,7 +89,6 @@ ViewBuildable   | ✅
 View Modifier   | ✅
 Text Modifier   | ✅
 Stack Modifier  | ✅
-Image Modifier  | ✅
 ScrollView Modifier  | ✅
 
 <a name="view_modifier"></a>
@@ -98,35 +96,42 @@ ScrollView Modifier  | ✅
 
 | name                           | Description  |
 ---------------------------------|----------------
-setHContentHugging               | Sets the priority with which a view resists being made larger than its intrinsic size.
-setVContentHugging               | Sets the priority with which a view resists being made larger than its intrinsic size.
-setHContentCompressionResistance | Sets the priority with which a view resists being made smaller than its intrinsic size.
-setVContentCompressionResistance | Sets the priority with which a view resists being made smaller than its intrinsic size.
-makeRatio                        | Modify the ratio of the size of the view.
-cornerRadius                     | Modify corner radius.
-border                           | Modify border style.
-background                       | Modifiy background color.
-makeContentMode                  | Modify content mode.
-frame                            | Positions this view within an invisible frame with the specified size.
-padding                          | Adds an equal padding amount to specific edges of this view.
-allowsHitTesting                 | Configures whether this view participates in hit test operations.
-masksToBounds                    | Setting sublayers are clipped to the layer’s bounds.
-accessibilityIdentifier          | Uses the string you specify to identify the view.
-overlay                          | Layers the views that you specify in front of this view.
+setHContentHugging               | Adjusts the priority for a view to resist growing beyond its intrinsic size horizontally.
+setVContentHugging               | Adjusts the priority for a view to resist growing beyond its intrinsic size vertically.
+setHContentCompressionResistance | Adjusts the priority for a view to resist shrinking below its intrinsic size horizontally.
+setVContentCompressionResistance | Adjusts the priority for a view to resist shrinking below its intrinsic size vertically.
+makeRatio                        | Sets the aspect ratio constraint for the view's size.
+cornerRadius                     | Applies a corner radius to the view to create rounded corners.
+border                           | Adds a border with specified color and width to the view.
+background                       | Sets the background color of the view.
+makeContentMode                  | Sets the content mode of the view.
+frame                            | Positions the view within a specified frame size.
+padding                          | Adds padding around specific edges of the view.
+allowsHitTesting                 | Enables or disables the view's interaction with touch events.
+masksToBounds                    | Clips the view's sublayers to its boundaries.
+accessibilityIdentifier          | Assigns an identifier used to find this view in tests.
+overlay                          | Places specified views in front of the view.
 background                       | Layers the views that you specify behind this view.
+center                           | Centers the view within a new parent view.
+tint                             | Applies a tint color to the view.
+opacity                          | Sets the transparency level of the view.
+scaleEffect                      | Scales the view by specified factors along the x and y axes.
+rotationEffect                   | Rotates the view by a specified angle around a given anchor point.
 
 <a name="text_modifier"></a>
 ### Text Modifier
 
 | name                           | Description  |
 ---------------------------------|----------------
-font                             | Modify text font.
-foregroundColor                  | Modify foreground color.
-textAligned                      | Modify text alignment
-lineLimit                        | The maximum number of lines that text can occupy in a view.
-lineBreakMode                    | Modify line break mode.
-adjustFontSize                   | Modify adjustsfontsize to fit width
-minimumScaleFactor               | Modify minimum scale factor.
+font                             | Sets the font of the text.
+foregroundColor                  | Applies a foreground color to the text.
+textAligned                      | Sets the alignment of the text within its container.
+lineLimit                        | Specifies the maximum number of lines the text can span.
+lineBreakMode                    | Defines how text wraps when it reaches the edge of its container.
+adjustFontSize                   | Adjusts the font size of the text to fit its width.
+minimumScaleFactor               | Sets the smallest multiplier for text size reduction to fit the width.
+preferredMaxLayoutWidth          | Sets the preferred maximum width for the Text object and enables method chaining.
+baselineAdjusted                 | Applies a baseline adjustment to the Text object and enables method chaining.
 
 <a name="stack_modifier"></a>
 ### Stack Modifier
@@ -134,13 +139,6 @@ minimumScaleFactor               | Modify minimum scale factor.
 | name                           | Description  |
 ---------------------------------|----------------
 distributed                      | Modify stack's distribution layout.
-
-<a name="image_modifier"></a>
-### Image Modifier
-
-| name                           | Description  |
----------------------------------|----------------
-tintColor                        | Modify tint color.
 
 <a name="scrollview_modifier"></a>
 ### ScrollView Modifier
