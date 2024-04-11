@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hyperconnect/HypeUI",
       "state" : {
-        "revision" : "cced2e32e1b707a20c7e5c3123945b1811633141",
-        "version" : "0.1.0"
+        "revision" : "f485ca4ffd96df345c5ecf6864d0ca8a172dea00",
+        "version" : "0.3.0"
       }
     },
     {
