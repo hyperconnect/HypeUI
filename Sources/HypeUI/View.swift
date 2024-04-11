@@ -267,6 +267,21 @@ public extension UIView {
         self.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         return self
     }
+    
+    /// Applies a rotation transformation to the view.
+    ///
+    /// - Parameters:
+    ///   - angle: The rotation angle in degrees.
+    ///   - anchor: The anchor point of the rotation, default is center.
+    /// - Returns: The view with the rotation applied, allowing for chaining.
+    func rotationEffect(_ angle: CGFloat, anchor: CGPoint = CGPoint(x: 0.5, y: 0.5)) -> Self {
+        var transform = CGAffineTransform.identity
+        transform = transform.translatedBy(x: anchor.x, y: anchor.y)
+        transform = transform.rotated(by: angle * CGFloat.pi / 180)
+        transform = transform.translatedBy(x: -anchor.x, y: -anchor.y)
+        self.transform = transform
+        return self
+    }
 }
 
 // MARK: - UIStackView
