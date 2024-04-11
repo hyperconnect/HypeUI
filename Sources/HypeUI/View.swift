@@ -256,6 +256,17 @@ public extension UIView {
         alpha = opacity
         return self
     }
+    
+    /// Applies a scale transformation to the view.
+    ///
+    /// - Parameters:
+    ///   - scaleX: The scale factor in the x-axis.
+    ///   - scaleY: The scale factor in the y-axis.
+    /// - Returns: The view with the scaling applied, allowing for chaining.
+    func scaleEffect(scaleX: CGFloat, scaleY: CGFloat) -> Self {
+        self.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+        return self
+    }
 }
 
 // MARK: - UIStackView
