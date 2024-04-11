@@ -183,4 +183,24 @@ final class ViewTests: XCLayoutTestCase {
         XCTAssertEqual(contentView.frame.maxY - 100, output.minY)
         XCTAssertEqual(CGSize(width: 100, height: 100), output.size)
     }
+    
+    func testCenter() {
+        // Given
+        let sut = Text()
+            .frame(width: 200, height: 200)
+        
+        // When
+        contentView.addSubviewWithFit(
+            ZStack {
+                UIView()
+                    .frame(width: 400, height: 400)
+                sut.center()
+            }.center()
+        )
+        contentView.layoutIfNeeded()
+        
+        // Then
+        XCTAssertEqual(sut.center, CGPoint(x: 200, y: 200))
+        XCTAssertEqual(sut.bounds.size, CGSize(width: 200, height: 200))
+    }
 }
