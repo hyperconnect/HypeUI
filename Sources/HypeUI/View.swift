@@ -221,6 +221,18 @@ public extension UIView {
             self
         }
     }
+    
+    /// Wraps and centers the current view in a new parent View.
+    ///
+    /// - Returns: The new parent View with this view centered inside.
+    func center() -> UIView {
+        let view = UIView()
+        view.addSubview(self)
+        snp.makeConstraints { maker in
+            maker.center.equalToSuperview()
+        }
+        return view
+    }
 }
 
 // MARK: - UIStackView
