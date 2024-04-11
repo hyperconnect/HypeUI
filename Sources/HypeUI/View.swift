@@ -244,6 +244,18 @@ public extension UIView {
         self.tintColor = tintColor
         return self
     }
+    
+    /// Sets the opacity of the view and returns the modified view for chaining.
+    ///
+    /// This function adjusts the `alpha` property of the view to control its opacity, allowing for fluent style coding.
+    /// The return type of 'Self' ensures that the function can be used with any subclass of UIView that inherits this method.
+    ///
+    /// - Parameter opacity: The opacity level to set, where 1 is fully opaque and 0 is completely transparent.
+    /// - Returns: The view instance with the updated opacity.
+    func opacity(_ opacity: CGFloat) -> Self {
+        alpha = opacity
+        return self
+    }
 }
 
 // MARK: - UIStackView
