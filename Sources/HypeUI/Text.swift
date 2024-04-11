@@ -84,4 +84,14 @@ public extension Text {
         self.minimumScaleFactor = factor
         return self
     }
+    
+    /// Sets the preferred maximum layout width for the Text object
+    /// This function allows for chaining by returning the modified Text instance.
+    ///
+    /// - Parameter width: The maximum width that the Text object should try to adhere to in its layout.
+    /// - Returns: The Text instance with the updated preferred maximum layout width, allowing for method chaining.
+    func preferredMaxLayoutWidth(_ width: CGFloat) -> Text {
+        preferredMaxLayoutWidth = width
+        return self
+    }
 }
