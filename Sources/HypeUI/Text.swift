@@ -94,4 +94,13 @@ public extension Text {
         preferredMaxLayoutWidth = width
         return self
     }
+    
+    /// Sets the baseline adjustment and returns the Text for method chaining.
+    ///
+    /// - Parameter adjustment: The baseline adjustment to apply to the Text.
+    /// - Returns: The Text with the updated baseline adjustment.
+    func baselineAdjusted(_ adjustment: UIBaselineAdjustment) -> Text {
+        baselineAdjustment = adjustment
+        return self
+    }
 }
