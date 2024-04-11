@@ -233,6 +233,17 @@ public extension UIView {
         }
         return view
     }
+    
+    /// Applies a tint color to the view and returns the modified view for chaining.
+    ///
+    /// This extension function sets the `tintColor` property of the view to a specified color, allowing for easy modification of the view's appearance in a method chaining style.
+    ///
+    /// - Parameter tintColor: The color to set as the tint color of the view.
+    /// - Returns: The view instance with the updated tint color.
+    func tint(_ tintColor: UIColor) -> Self {
+        self.tintColor = tintColor
+        return self
+    }
 }
 
 // MARK: - UIStackView
