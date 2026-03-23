@@ -32,4 +32,13 @@ public struct Gradient {
     public init(stops: [Stop]) {
         self.stops = stops
     }
+
+    /// Creates a gradient from an array of colors with evenly spaced stops.
+    /// - Parameter colors: The array of colors to use in the gradient.
+    public init(colors: [UIColor]) {
+        let count = colors.count
+        self.stops = colors.enumerated().map { index, color in
+            Stop(color: color, location: count > 1 ? CGFloat(index) / CGFloat(count - 1) : 0)
+        }
+    }
 }

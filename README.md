@@ -26,6 +26,12 @@ Want to enjoy SwiftUI syntax with UIKit? It's time to use HypeUI 😊
     * [Text Modifier](#text_modifier)
     * [Stack Modifier](#stack_modifier)
     * [ScrollView Modifier](#scrollview_modifier)
+    * [Toggle Modifier](#toggle_modifier)
+    * [Slider Modifier](#slider_modifier)
+    * [Stepper Modifier](#stepper_modifier)
+    * [ProgressView Modifier](#progressview_modifier)
+    * [ActivityIndicator Modifier](#activityindicator_modifier)
+    * [PageControl Modifier](#pagecontrol_modifier)
     * [Image Modifier](#image_modifier)
     * [UIKit Extensions](#uikit_extensions)
 - [Usage](#usage)
@@ -36,6 +42,12 @@ Want to enjoy SwiftUI syntax with UIKit? It's time to use HypeUI 😊
     * [Text](#text)
     * [Image](#image)
     * [ScrollView](#scrollview)
+    * [Toggle](#toggle)
+    * [Slider](#slider)
+    * [Stepper](#stepper)
+    * [ProgressView](#progressview)
+    * [ActivityIndicator](#activityindicator)
+    * [PageControl](#pagecontrol)
     * [Behavior](#behavior)
     * [Spacer](#spacer)
     * [LinearGradient](#lineargradient)
@@ -93,6 +105,12 @@ View Modifier   | ✅
 Text Modifier   | ✅
 Stack Modifier  | ✅
 ScrollView Modifier  | ✅
+Toggle (UISwitch) | ✅
+Slider (UISlider) | ✅
+Stepper (UIStepper) | ✅
+ProgressView (UIProgressView) | ✅
+ActivityIndicator (UIActivityIndicatorView) | ✅
+PageControl (UIPageControl) | ✅
 Image Modifier  | ✅
 UIKit Extensions | ✅
 
@@ -122,6 +140,11 @@ tint                             | Applies a tint color to the view.
 opacity                          | Sets the transparency level of the view.
 scaleEffect                      | Scales the view by specified factors along the x and y axes.
 rotationEffect                   | Rotates the view by a specified angle around a given anchor point.
+hidden                           | Sets whether the view is hidden.
+disabled                         | Sets whether user interactions are disabled for this view.
+tag                              | Sets an integer identifier for the view.
+zIndex                           | Sets the order in which the view is composited on the z axis.
+fixedSize                        | Fixes the view at its ideal size by setting compression resistance to required.
 
 <a name="text_modifier"></a>
 ### Text Modifier
@@ -144,6 +167,9 @@ baselineAdjusted                 | Applies a baseline adjustment to the Text obj
 | name                           | Description  |
 ---------------------------------|----------------
 distributed                      | Modify stack's distribution layout.
+spacing                          | Sets the spacing between arranged subviews.
+alignment                        | Sets the alignment of arranged subviews perpendicular to the stack view's axis.
+layoutMargins                    | Sets the layout margins for the stack view and enables margin-relative layout.
 
 <a name="scrollview_modifier"></a>
 ### ScrollView Modifier
@@ -153,6 +179,98 @@ distributed                      | Modify stack's distribution layout.
 bounces                          | Modify scroll view bounces.
 isPagingEnabled                  | Modify scroll view paging enabled.
 isScrollEnabled                  | Modify scroll view enabled.
+contentInset                     | Sets the custom distance that the content view is inset from the safe area or scroll view edges.
+scrollIndicatorInsets            | Sets the distance the scroll indicators are inset from the edge of the scroll view.
+alwaysBounceVertical             | Sets whether the scroll view always bounces vertically, regardless of content size.
+alwaysBounceHorizontal           | Sets whether the scroll view always bounces horizontally, regardless of content size.
+decelerationRate                 | Sets the rate at which the scroll view decelerates to a stop.
+showsVerticalScrollIndicator     | Sets whether the scroll view shows the vertical scroll indicator.
+showsHorizontalScrollIndicator   | Sets whether the scroll view shows the horizontal scroll indicator.
+contentOffset                    | Sets the offset of the content origin from the scroll view origin.
+
+<a name="toggle_modifier"></a>
+### Toggle Modifier (UISwitch)
+
+| name                           | Description  |
+---------------------------------|----------------
+isOn                             | Sets the on/off state of the switch.
+onTintColor                      | Sets the color used to tint the appearance of the switch when it is turned on.
+thumbTintColor                   | Sets the color used to tint the color of the thumb.
+tintColor                        | Sets the color used to tint the outline of the switch when it is turned off.
+onChange                         | Adds an action to perform when the switch value changes.
+
+<a name="slider_modifier"></a>
+### Slider Modifier (UISlider)
+
+| name                           | Description  |
+---------------------------------|----------------
+value                            | Sets the current value of the slider.
+minimumValue                     | Sets the minimum value of the slider.
+maximumValue                     | Sets the maximum value of the slider.
+isContinuous                     | Sets whether changes in the slider's value generate continuous update events.
+minimumTrackTintColor            | Sets the color used to tint the default minimum track images.
+maximumTrackTintColor            | Sets the color used to tint the default maximum track images.
+thumbTintColor                   | Sets the color used to tint the default thumb images.
+onChange                         | Adds an action to perform when the slider value changes.
+
+<a name="stepper_modifier"></a>
+### Stepper Modifier (UIStepper)
+
+| name                           | Description  |
+---------------------------------|----------------
+value                            | Sets the numeric value of the stepper.
+minimumValue                     | Sets the lowest possible numeric value for the stepper.
+maximumValue                     | Sets the highest possible numeric value for the stepper.
+stepValue                        | Sets the step, or increment, value for the stepper.
+wraps                            | Sets whether the stepper value wraps around from the maximum to minimum value.
+autorepeat                       | Sets whether the stepper automatically repeats when a user presses and holds a stepper button.
+isContinuous                     | Sets whether the stepper sends value changes during user interaction or only when interaction ends.
+onChange                         | Adds an action to perform when the stepper value changes.
+
+<a name="progressview_modifier"></a>
+### ProgressView Modifier (UIProgressView)
+
+| name                           | Description  |
+---------------------------------|----------------
+progress                         | Sets the current progress of the progress view.
+progressTintColor                | Sets the color shown for the portion of the progress bar that is filled.
+trackTintColor                   | Sets the color shown for the portion of the progress bar that is not filled.
+progressViewStyle                | Sets the current graphical style of the progress view.
+progressImage                    | Sets the image to use for the progress portion of the progress bar.
+trackImage                       | Sets the image to use for the tracking portion of the progress bar.
+
+<a name="activityindicator_modifier"></a>
+### ActivityIndicator Modifier (UIActivityIndicatorView)
+
+| name                           | Description  |
+---------------------------------|----------------
+style                            | Sets the basic appearance of the activity indicator.
+color                            | Sets the color of the activity indicator.
+hidesWhenStopped                 | Sets whether the receiver is hidden when the animation stops.
+animating                        | Starts or stops animating the activity indicator.
+
+<a name="pagecontrol_modifier"></a>
+### PageControl Modifier (UIPageControl)
+
+| name                           | Description  |
+---------------------------------|----------------
+currentPage                      | Sets the current page displayed by the page control.
+numberOfPages                    | Sets the number of pages the page control shows.
+pageIndicatorTintColor           | Sets the tint color to apply to the page indicator.
+currentPageIndicatorTintColor    | Sets the tint color to apply to the current page indicator.
+hidesForSinglePage               | Sets whether the page control is hidden when there is only one page.
+onChange                         | Adds an action to perform when the current page changes.
+
+<a name="image_modifier"></a>
+### Image Modifier (UIImageView)
+
+| name                           | Description  |
+---------------------------------|----------------
+imaged                           | Sets the image displayed in the image view.
+highlightedImage                 | Sets the highlighted image displayed in the image view.
+isHighlighted                    | Sets whether the image view is highlighted.
+animationImages                  | Sets the images to use for an animation with the total duration.
+symbolConfiguration              | Sets the configuration values to use when rendering the image (iOS 13+).
 
 <a name="uikit_extensions"></a>
 ### UIKit Extensions
@@ -294,6 +412,80 @@ ScrollView(.vertical, showsIndicators: false) {
             .frame(height: 16)
     }
 }
+```
+
+### Toggle
+
+```swift
+UISwitch()
+    .isOn(true)
+    .onTintColor(.systemGreen)
+    .thumbTintColor(.white)
+    .onChange { isOn in
+        print("Switch is now: \(isOn)")
+    }
+```
+
+### Slider
+
+```swift
+UISlider()
+    .minimumValue(0)
+    .maximumValue(100)
+    .value(50)
+    .minimumTrackTintColor(.systemBlue)
+    .maximumTrackTintColor(.systemGray)
+    .onChange { value in
+        print("Slider value: \(value)")
+    }
+```
+
+### Stepper
+
+```swift
+UIStepper()
+    .minimumValue(0)
+    .maximumValue(10)
+    .stepValue(1)
+    .value(3)
+    .wraps(false)
+    .onChange { value in
+        print("Stepper value: \(value)")
+    }
+```
+
+### ProgressView
+
+```swift
+UIProgressView()
+    .progressViewStyle(.default)
+    .progress(0.5)
+    .progressTintColor(.systemBlue)
+    .trackTintColor(.systemGray5)
+```
+
+### ActivityIndicator
+
+```swift
+UIActivityIndicatorView()
+    .style(.medium)
+    .color(.systemGray)
+    .hidesWhenStopped(true)
+    .animating(true)
+```
+
+### PageControl
+
+```swift
+UIPageControl()
+    .numberOfPages(5)
+    .currentPage(0)
+    .pageIndicatorTintColor(.systemGray3)
+    .currentPageIndicatorTintColor(.systemBlue)
+    .hidesForSinglePage(true)
+    .onChange { page in
+        print("Current page: \(page)")
+    }
 ```
 
 ### @Behavior - It's seems like SwiftUI's @State using DynamicLinkable 😎

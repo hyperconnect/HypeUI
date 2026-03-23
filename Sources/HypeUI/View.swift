@@ -281,16 +281,86 @@ public extension UIView {
         self.transform = transform
         return self
     }
+
+    /// Sets whether the view is hidden.
+    /// - Parameter hidden: A Boolean value that determines whether the view is hidden.
+    /// - Returns: Modified view.
+    func hidden(_ hidden: Bool) -> Self {
+        isHidden = hidden
+        return self
+    }
+
+    /// Sets whether user interactions are disabled for this view.
+    /// - Parameter disabled: A Boolean value that determines whether user interactions are disabled.
+    /// - Returns: Modified view.
+    func disabled(_ disabled: Bool) -> Self {
+        isUserInteractionEnabled = !disabled
+        return self
+    }
+
+    /// Sets an integer that you can use to identify view objects in your application.
+    /// - Parameter value: An integer that you can use to identify view objects in your application.
+    /// - Returns: Modified view.
+    func tag(_ value: Int) -> Self {
+        tag = value
+        return self
+    }
+
+    /// Sets the order in which the view is composited on top of or underneath other views on the z axis.
+    /// - Parameter value: The z-axis position of the layer relative to other layers.
+    /// - Returns: Modified view.
+    func zIndex(_ value: CGFloat) -> Self {
+        layer.zPosition = value
+        return self
+    }
+
+    /// Fixes the view at its ideal size in both dimensions.
+    /// Sets content compression resistance and content hugging priority to required,
+    /// preventing the view from shrinking below or growing beyond its intrinsic content size.
+    /// - Returns: Modified view.
+    func fixedSize() -> Self {
+        setContentCompressionResistancePriority(.required, for: .horizontal)
+        setContentCompressionResistancePriority(.required, for: .vertical)
+        setContentHuggingPriority(.required, for: .horizontal)
+        setContentHuggingPriority(.required, for: .vertical)
+        return self
+    }
 }
 
 // MARK: - UIStackView
 
 public extension UIStackView {
-    /// Modify stack's distribution layout.
+
+    /// Modify stack’s distribution layout.
     /// - Parameter distribution: The layout that defines the size and position of the arranged views along the stack view’s axis.
     /// - Returns: Modified stack view.
     func distributed(_ distribution: UIStackView.Distribution) -> Self {
         self.distribution = distribution
+        return self
+    }
+
+    /// Sets the spacing between arranged subviews.
+    /// - Parameter spacing: The distance in points between the adjacent edges of the stack view’s arranged views.
+    /// - Returns: Modified stack view.
+    func spacing(_ spacing: CGFloat) -> Self {
+        self.spacing = spacing
+        return self
+    }
+
+    /// Sets the alignment of arranged subviews perpendicular to the stack view’s axis.
+    /// - Parameter alignment: The alignment of the arranged subviews perpendicular to the stack view’s axis.
+    /// - Returns: Modified stack view.
+    func alignment(_ alignment: UIStackView.Alignment) -> Self {
+        self.alignment = alignment
+        return self
+    }
+
+    /// Sets the layout margins for the stack view and enables margin-relative layout.
+    /// - Parameter insets: The layout margins to apply.
+    /// - Returns: Modified stack view.
+    func layoutMargins(_ insets: UIEdgeInsets) -> Self {
+        layoutMargins = insets
+        isLayoutMarginsRelativeArrangement = true
         return self
     }
 }

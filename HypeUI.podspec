@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.swift_version = '5.0'
   s.dependency "RxSwift", '~> 6.0'
   s.dependency "RxCocoa", '~> 6.0'
-  s.dependency "SnapKit", '~> 5.0.0'
+  s.dependency "SnapKit", '~> 5.0'
 end

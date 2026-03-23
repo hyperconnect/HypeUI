@@ -84,4 +84,70 @@ public extension UIScrollView {
         self.isScrollEnabled = isScrollEnabled
         return self
     }
+
+    /// Sets the custom distance that the content view is inset from the safe area or scroll view edges.
+    /// - Parameter insets: The custom distance that the content view is inset from the safe area or scroll view edges.
+    /// - Returns: Modified scroll view.
+    func contentInset(_ insets: UIEdgeInsets) -> Self {
+        contentInset = insets
+        return self
+    }
+
+    /// Sets the distance the scroll indicators are inset from the edge of the scroll view.
+    /// - Parameter insets: The distance the scroll indicators are inset from the edge of the scroll view.
+    /// - Returns: Modified scroll view.
+    func scrollIndicatorInsets(_ insets: UIEdgeInsets) -> Self {
+        self.scrollIndicatorInsets = insets
+        return self
+    }
+
+    /// Sets whether the scroll view always scrolls vertically, regardless of content size.
+    /// - Parameter value: A Boolean value that determines whether bouncing always occurs when vertical scrolling reaches the end of the content.
+    /// - Returns: Modified scroll view.
+    func alwaysBounceVertical(_ value: Bool) -> Self {
+        alwaysBounceVertical = value
+        return self
+    }
+
+    /// Sets whether the scroll view always scrolls horizontally, regardless of content size.
+    /// - Parameter value: A Boolean value that determines whether bouncing always occurs when horizontal scrolling reaches the end of the content.
+    /// - Returns: Modified scroll view.
+    func alwaysBounceHorizontal(_ value: Bool) -> Self {
+        alwaysBounceHorizontal = value
+        return self
+    }
+
+    /// Sets the rate at which the scroll view decelerates to a stop after the user lifts their finger.
+    /// - Parameter rate: The rate at which the scroll view decelerates to a stop.
+    /// - Returns: Modified scroll view.
+    func decelerationRate(_ rate: UIScrollView.DecelerationRate) -> Self {
+        decelerationRate = rate
+        return self
+    }
+
+    /// Sets whether the scroll view shows the vertical scroll indicator.
+    /// - Parameter value: A Boolean value that controls whether the vertical scroll indicator is visible.
+    /// - Returns: Modified scroll view.
+    func showsVerticalScrollIndicator(_ value: Bool) -> Self {
+        showsVerticalScrollIndicator = value
+        return self
+    }
+
+    /// Sets whether the scroll view shows the horizontal scroll indicator.
+    /// - Parameter value: A Boolean value that controls whether the horizontal scroll indicator is visible.
+    /// - Returns: Modified scroll view.
+    func showsHorizontalScrollIndicator(_ value: Bool) -> Self {
+        showsHorizontalScrollIndicator = value
+        return self
+    }
+
+    /// Sets the offset of the content origin from the scroll view origin.
+    /// - Parameters:
+    ///   - offset: A point that represents the content offset.
+    ///   - animated: Whether to animate the transition.
+    /// - Returns: Modified scroll view.
+    func contentOffset(_ offset: CGPoint, animated: Bool = false) -> Self {
+        setContentOffset(offset, animated: animated)
+        return self
+    }
 }

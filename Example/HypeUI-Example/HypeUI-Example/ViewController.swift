@@ -17,206 +17,77 @@
 import HypeUI
 import UIKit
 
-class ViewController: UIViewController {
+// MARK: - ConceptListViewController
+
+final class ConceptListViewController: UIViewController {
+
+    private struct Concept {
+        let title: String
+        let subtitle: String
+        let picsumSeed: Int
+        let makeVC: () -> UIViewController
+    }
+
+    private let concepts: [Concept] = [
+        Concept(title: "Music Player",      subtitle: "Slider · ProgressView · Switch · PageControl", picsumSeed: 10, makeVC: MusicPlayerViewController.init),
+        Concept(title: "Social Profile",    subtitle: "Overlay · ZStack · LinearGradient · Behavior",  picsumSeed: 20, makeVC: SocialProfileViewController.init),
+        Concept(title: "Settings",          subtitle: "Switch · Slider · Stepper · ActivityIndicator", picsumSeed: 30, makeVC: SettingsViewController.init),
+        Concept(title: "Travel Carousel",   subtitle: "ScrollView · PageControl · ZStack",             picsumSeed: 40, makeVC: TravelCarouselViewController.init),
+        Concept(title: "Component Gallery", subtitle: "Text · Button · Gradient · Border",             picsumSeed: 50, makeVC: ComponentGalleryViewController.init),
+        Concept(title: "Animation",         subtitle: "opacity · scaleEffect · rotationEffect",        picsumSeed: 60, makeVC: AnimationShowcaseViewController.init),
+    ]
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "HypeUI"
+        view.backgroundColor = .systemBackground
+
+        let imageViews: [UIImageView] = concepts.map { _ in
+            Image(nil)
+                .makeContentMode(.scaleAspectFill)
+                .frame(height: 160)
+                .background(.systemGray5)
+                .masksToBounds(true)
+        }
 
         view.addSubviewWithFit(
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 10) {
-                    Text("Text")
-                        .font(UIFont.systemFont(ofSize: 32, weight: .heavy))
-                    Spacer()
-                        .background(.systemGray5)
-                        .frame(height: 1)
-                    Text("Heading 1")
-                        .font(UIFont.systemFont(ofSize: 32, weight: .bold))
-                        .foregroundColor(UIColor.black)
-                    Text("Heading 2")
-                        .font(UIFont.systemFont(ofSize: 24, weight: .bold))
-                    Text("Heading 3")
-                        .font(UIFont.systemFont(ofSize: 16, weight: .bold))
-                    Text("Heavy")
-                        .font(UIFont.systemFont(ofSize: 16, weight: .heavy))
-                    Text("Bold")
-                        .font(UIFont.systemFont(ofSize: 16, weight: .bold))
-                    Text("Regular")
-                        .font(UIFont.systemFont(ofSize: 16, weight: .regular))
-                    Text("Light")
-                        .font(UIFont.systemFont(ofSize: 16, weight: .light))
-                    Text("Alignement Center")
-                        .font(UIFont.systemFont(ofSize: 16, weight: .light))
-                        .textAligned(.center)
-                    Text("🌺 HypeUI is a implementation of Apple's SwiftUI DSL style based on UIKit")
-                        .font(UIFont.systemFont(ofSize: 16, weight: .regular))
-                        .foregroundColor(UIColor.systemGray)
-                        .lineLimit(3)
-                    Spacer()
-                        .frame(height: 64)
-                    Text("Button")
-                        .font(UIFont.systemFont(ofSize: 32, weight: .heavy))
-                    Spacer()
-                        .background(.systemGray5)
-                        .frame(height: 1)
-                    Button(action: { print("🐠 Click Me!!") }) {
-                        Text("🐠 Click Me!!")
-                            .font(UIFont.systemFont(ofSize: 16, weight: .bold))
-                            .foregroundColor(UIColor.white)
-                            .textAligned(.center)
-                            .padding(.horizontal, 24)
-                            .frame(height: 48)
-                            .background(.systemYellow)
-                            .cornerRadius(24)
-                    }.padding(.horizontal, 64)
-                    Button(action: { print("Border Button") }) {
-                        Text("Border Button")
-                            .font(UIFont.systemFont(ofSize: 16, weight: .bold))
-                            .foregroundColor(UIColor.black)
-                            .textAligned(.center)
-                            .padding(.horizontal, 24)
-                            .frame(height: 48)
-                            .background(UIColor.white)
-                            .border(UIColor.black, width: 2)
-                            .cornerRadius(24)
-                    }.padding(.horizontal, 64)
-                    Button(action: { print("Stack Button") }) {
-                        ZStack {
-                            UIView()
-                                .background(.systemBlue)
-                                .frame(height: 48)
-                                .cornerRadius(24)
-                            HStack(alignment: .center) {
-                                VStack(alignment: .center, spacing: 1) {
-                                    Text("Stack Button")
-                                        .font(UIFont.systemFont(ofSize: 16, weight: .bold))
-                                        .foregroundColor(UIColor.white)
-                                    HStack(alignment: .center, spacing: 2) {
-                                        Text("🌎")
-                                            .font(UIFont.systemFont(ofSize: 12, weight: .medium))
-                                        Text("Earth")
-                                            .font(UIFont.systemFont(ofSize: 14, weight: .medium))
-                                            .foregroundColor(UIColor.white)
-                                    }
+                VStack(spacing: 16) {
+                    concepts.enumerated().map { index, concept -> UIView in
+                        let iv = imageViews[index]
+                        return Button(action: { [weak self] in
+                            self?.navigationController?.pushViewController(concept.makeVC(), animated: true)
+                        }) {
+                            ZStack {
+                                iv
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.clear, UIColor.black.withAlphaComponent(0.65)]),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                                VStack(alignment: .leading, spacing: 6) {
+                                    Spacer()
+                                    Text(concept.title)
+                                        .font(UIFont.systemFont(ofSize: 20, weight: .bold))
+                                        .foregroundColor(.white)
+                                    Text(concept.subtitle)
+                                        .font(UIFont.systemFont(ofSize: 13, weight: .medium))
+                                        .foregroundColor(UIColor.white.withAlphaComponent(0.75))
+                                        .lineLimit(1)
                                 }
+                                .padding(.all, 16)
                             }
-                        }
-                    }.padding(.horizontal, 64)
-                    Spacer()
-                        .frame(height: 64)
-                    Text("ScrollView")
-                        .font(UIFont.systemFont(ofSize: 32, weight: .heavy))
-                    Spacer()
-                        .background(.systemGray5)
-                        .frame(height: 1)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .center, spacing: 8) {
-                            ["Proactive", "One Team", "Aim High", "Priortize", "Move Fast", "Logical", "Open"].map {
-                                Text($0)
-                                    .font(UIFont.systemFont(ofSize: 18, weight: .bold))
-                                    .foregroundColor(UIColor.black)
-                                    .textAligned(.center)
-                                    .background(.systemGray6)
-                                    .frame(width: 140, height: 64)
-                                    .cornerRadius(32)
-                            }
+                            .cornerRadius(16)
+                            .masksToBounds(true)
                         }
                     }
-                    Spacer()
-                        .frame(height: 64)
-                    Text("View Modifier")
-                        .font(UIFont.systemFont(ofSize: 32, weight: .heavy))
-                    Spacer()
-                        .background(.systemGray5)
-                        .frame(height: 1)
-                    Text("Padding")
-                        .foregroundColor(UIColor.white)
-                        .textAligned(.center)
-                        .font(UIFont.systemFont(ofSize: 14, weight: .bold))
-                        .padding(.all, 12)
-                        .background(UIColor.systemRed)
-                        .padding(.all, 12)
-                        .background(UIColor.systemOrange)
-                        .padding(.all, 12)
-                        .background(UIColor.systemYellow)
-                        .padding(.all, 12)
-                        .background(UIColor.systemGreen)
-                        .padding(.all, 12)
-                        .background(UIColor.systemBlue)
-                        .padding(.all, 12)
-                        .background(UIColor.systemIndigo)
-                        .padding(.all, 12)
-                        .background(UIColor.systemPurple)
-                    Text("Border")
-                        .foregroundColor(UIColor.white)
-                        .textAligned(.center)
-                        .font(UIFont.systemFont(ofSize: 14, weight: .bold))
-                        .padding(.all, 12)
-                        .background(UIColor.systemGray)
-                        .border(UIColor.black, width: 2)
-                    Spacer()
-                        .frame(height: 64)
-                    Text("UIKit Extensions")
-                        .font(UIFont.systemFont(ofSize: 32, weight: .heavy))
-                    Spacer()
-                        .background(.systemGray5)
-                        .frame(height: 1)
-                    Text("Shadow")
-                        .foregroundColor(UIColor.white)
-                        .textAligned(.center)
-                        .font(UIFont.systemFont(ofSize: 14, weight: .bold))
-                        .padding(.all, 12)
-                        .background(UIColor.systemBlue)
-                        .cornerRadius(8)
-                        .shadow()
-                    Text("Custom Shadow")
-                        .foregroundColor(UIColor.white)
-                        .textAligned(.center)
-                        .font(UIFont.systemFont(ofSize: 14, weight: .bold))
-                        .padding(.all, 12)
-                        .background(UIColor.systemPurple)
-                        .cornerRadius(8)
-                        .shadow(color: .systemPurple, radius: 8, offset: CGSize(width: 0, height: 4), opacity: 0.4)
-                    Button(action: {
-                        print("Debounced button tapped!")
-                    }) {
-                        Text("Debounced Button")
-                            .font(UIFont.systemFont(ofSize: 16, weight: .bold))
-                            .foregroundColor(UIColor.white)
-                            .textAligned(.center)
-                            .padding(.horizontal, 24)
-                            .frame(height: 48)
-                            .background(.systemOrange)
-                            .cornerRadius(24)
-                    }
-                    .debouncedAction(delay: 1.0) {
-                        print("🚀 Debounced action executed!")
-                    }
-                    .padding(.horizontal, 64)
-                    VStack(spacing: 16) {
-                        UITextField()
-                            .keyboardType(.emailAddress)
-                            .textFieldStyle(.roundedRect)
-                            .autocorrectionDisabled()
-                            .textContentType(.emailAddress)
-                            .frame(height: 44)
-                        UITextView()
-                            .keyboardType(.default)
-                            .textInputAutocapitalization(.sentences)
-                            .textEditorScrollable(true)
-                            .frame(height: 100)
-                            .border(.systemGray3, width: 1)
-                            .cornerRadius(8)
-                        UISegmentedControl(items: ["Option 1", "Option 2", "Option 3"])
-                            .selection(0)
-                            .selectedSegmentTintColor(.systemBlue)
-                            .onSelectionChange { index in
-                                print("Selected segment: \(index)")
-                            }
-                    }
-                    .padding(.horizontal, 64)
                 }
-                .padding(.all, 24)
+                .padding(.all, 20)
             }
         )
+
+        concepts.enumerated().forEach { index, concept in
+            imageViews[index].loadRemote(seed: concept.picsumSeed, width: 800, height: 320)
+        }
     }
 }

@@ -14,6 +14,13 @@
 		FC8A9F12291D33C200022ED3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC8A9F11291D33C200022ED3 /* Assets.xcassets */; };
 		FC8A9F15291D33C200022ED3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8A9F13291D33C200022ED3 /* LaunchScreen.storyboard */; };
 		FC8A9F1E291D33FC00022ED3 /* HypeUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC8A9F1D291D33FC00022ED3 /* HypeUI */; };
+		AA010002000000000000001A /* UIImageView+Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA010001000000000000001A /* UIImageView+Remote.swift */; };
+		AA010004000000000000001A /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA010003000000000000001A /* MusicPlayerViewController.swift */; };
+		AA010006000000000000001A /* SocialProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA010005000000000000001A /* SocialProfileViewController.swift */; };
+		AA010008000000000000001A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA010007000000000000001A /* SettingsViewController.swift */; };
+		AA01000A000000000000001A /* TravelCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA010009000000000000001A /* TravelCarouselViewController.swift */; };
+		AA01000C000000000000001A /* ComponentGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA01000B000000000000001A /* ComponentGalleryViewController.swift */; };
+		AA01000E000000000000001A /* AnimationShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA01000D000000000000001A /* AnimationShowcaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +32,13 @@
 		FC8A9F11291D33C200022ED3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC8A9F14291D33C200022ED3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC8A9F16291D33C300022ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA010001000000000000001A /* UIImageView+Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Remote.swift"; sourceTree = "<group>"; };
+		AA010003000000000000001A /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
+		AA010005000000000000001A /* SocialProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProfileViewController.swift; sourceTree = "<group>"; };
+		AA010007000000000000001A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AA010009000000000000001A /* TravelCarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCarouselViewController.swift; sourceTree = "<group>"; };
+		AA01000B000000000000001A /* ComponentGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentGalleryViewController.swift; sourceTree = "<group>"; };
+		AA01000D000000000000001A /* AnimationShowcaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationShowcaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +75,13 @@
 				FC8A9F08291D33C100022ED3 /* AppDelegate.swift */,
 				FC8A9F0A291D33C100022ED3 /* SceneDelegate.swift */,
 				FC8A9F0C291D33C100022ED3 /* ViewController.swift */,
+						AA010001000000000000001A /* UIImageView+Remote.swift */,
+						AA010003000000000000001A /* MusicPlayerViewController.swift */,
+						AA010005000000000000001A /* SocialProfileViewController.swift */,
+						AA010007000000000000001A /* SettingsViewController.swift */,
+						AA010009000000000000001A /* TravelCarouselViewController.swift */,
+						AA01000B000000000000001A /* ComponentGalleryViewController.swift */,
+						AA01000D000000000000001A /* AnimationShowcaseViewController.swift */,
 				FC8A9F0E291D33C100022ED3 /* Main.storyboard */,
 				FC8A9F11291D33C200022ED3 /* Assets.xcassets */,
 				FC8A9F13291D33C200022ED3 /* LaunchScreen.storyboard */,
@@ -147,6 +168,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC8A9F0D291D33C100022ED3 /* ViewController.swift in Sources */,
+						AA010002000000000000001A /* UIImageView+Remote.swift in Sources */,
+						AA010004000000000000001A /* MusicPlayerViewController.swift in Sources */,
+						AA010006000000000000001A /* SocialProfileViewController.swift in Sources */,
+						AA010008000000000000001A /* SettingsViewController.swift in Sources */,
+						AA01000A000000000000001A /* TravelCarouselViewController.swift in Sources */,
+						AA01000C000000000000001A /* ComponentGalleryViewController.swift in Sources */,
+						AA01000E000000000000001A /* AnimationShowcaseViewController.swift in Sources */,
 				FC8A9F09291D33C100022ED3 /* AppDelegate.swift in Sources */,
 				FC8A9F0B291D33C100022ED3 /* SceneDelegate.swift in Sources */,
 			);
@@ -377,7 +405,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		FC8A9F1D291D33FC00022ED3 /* HypeUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FC8A9F1C291D33FC00022ED3 /* XCRemoteSwiftPackageReference "HypeUI" */;
+			package = FC8A9F1C291D33FC00022ED3 /* XCLocalSwiftPackageReference "../.." */;
 			productName = HypeUI;
 		};
 /* End XCSwiftPackageProductDependency section */

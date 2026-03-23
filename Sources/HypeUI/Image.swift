@@ -35,4 +35,41 @@ public extension Image {
         self.image = image
         return self
     }
+
+    /// Sets the highlighted image displayed in the image view.
+    /// - Parameter image: The image to display when the image view is highlighted.
+    /// - Returns: Modified image view.
+    func highlightedImage(_ image: UIImage?) -> Self {
+        highlightedImage = image
+        return self
+    }
+
+    /// Sets whether the image view is highlighted.
+    /// - Parameter isHighlighted: A Boolean value that determines whether the image is highlighted.
+    /// - Returns: Modified image view.
+    func isHighlighted(_ isHighlighted: Bool) -> Self {
+        self.isHighlighted = isHighlighted
+        return self
+    }
+
+    /// Sets the images to use for an animation.
+    /// - Parameters:
+    ///   - images: An array of UIImage objects to use for an animation.
+    ///   - duration: The total duration of the animation.
+    /// - Returns: Modified image view.
+    func animationImages(_ images: [UIImage], duration: TimeInterval) -> Self {
+        animationImages = images
+        animationDuration = duration
+        return self
+    }
+
+    /// Sets the configuration values to use when rendering the image.
+    /// Available on iOS 13 and later.
+    /// - Parameter configuration: The configuration values to use when rendering the image.
+    /// - Returns: Modified image view.
+    @available(iOS 13.0, *)
+    func symbolConfiguration(_ configuration: UIImage.SymbolConfiguration) -> Self {
+        preferredSymbolConfiguration = configuration
+        return self
+    }
 }

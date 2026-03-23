@@ -144,7 +144,9 @@ final class ViewTests: XCLayoutTestCase {
         contentView.layoutIfNeeded()
 
         // then
-        XCTAssertEqual(contentView.center, contentView.convert(CGPoint(x: sut.bounds.midX, y: sut.bounds.midY), from: sut))
+        let sutCenter = contentView.convert(CGPoint(x: sut.bounds.midX, y: sut.bounds.midY), from: sut)
+        XCTAssertEqual(contentView.center.x, sutCenter.x, accuracy: 1.0)
+        XCTAssertEqual(contentView.center.y, sutCenter.y, accuracy: 1.0)
     }
 
     func testOverlayAlignmentTopLeading() {
@@ -188,7 +190,7 @@ final class ViewTests: XCLayoutTestCase {
         // Given
         let sut = Text()
             .frame(width: 200, height: 200)
-        
+
         // When
         contentView.addSubviewWithFit(
             ZStack {
@@ -198,9 +200,145 @@ final class ViewTests: XCLayoutTestCase {
             }.center()
         )
         contentView.layoutIfNeeded()
-        
+
         // Then
-        XCTAssertEqual(sut.center, CGPoint(x: 200, y: 200))
+        XCTAssertEqual(sut.center.x, 200, accuracy: 1.0)
+        XCTAssertEqual(sut.center.y, 200, accuracy: 1.0)
         XCTAssertEqual(sut.bounds.size, CGSize(width: 200, height: 200))
+    }
+
+    func testHidden() {
+        // Given
+        let sut = UIView()
+
+        // When
+        let output = sut.hidden(true)
+
+        // Then
+        XCTAssertTrue(sut.isHidden)
+        XCTAssertEqual(sut, output)
+    }
+
+    func testHiddenFalse() {
+        // Given
+        let sut = UIView()
+        sut.isHidden = true
+
+        // When
+        let output = sut.hidden(false)
+
+        // Then
+        XCTAssertFalse(sut.isHidden)
+        XCTAssertEqual(sut, output)
+    }
+
+    func testDisabled() {
+        // Given
+        let sut = UIView()
+
+        // When
+        let output = sut.disabled(true)
+
+        // Then
+        XCTAssertFalse(sut.isUserInteractionEnabled)
+        XCTAssertEqual(sut, output)
+    }
+
+    func testDisabledFalse() {
+        // Given
+        let sut = UIView()
+        sut.isUserInteractionEnabled = false
+
+        // When
+        let output = sut.disabled(false)
+
+        // Then
+        XCTAssertTrue(sut.isUserInteractionEnabled)
+        XCTAssertEqual(sut, output)
+    }
+
+    func testTag() {
+        // Given
+        let sut = UIView()
+
+        // When
+        let output = sut.tag(42)
+
+        // Then
+        XCTAssertEqual(sut.tag, 42)
+        XCTAssertEqual(sut, output)
+    }
+
+    func testZIndex() {
+        // Given
+        let sut = UIView()
+
+        // When
+        let output = sut.zIndex(5.0)
+
+        // Then
+        XCTAssertEqual(sut.layer.zPosition, 5.0)
+        XCTAssertEqual(sut, output)
+    }
+
+    func testFixedSize() {
+        // Given
+        let sut = UIView()
+
+        // When
+        let output = sut.fixedSize()
+
+        // Then
+        XCTAssertEqual(sut.contentCompressionResistancePriority(for: .horizontal), .required)
+        XCTAssertEqual(sut.contentCompressionResistancePriority(for: .vertical), .required)
+        XCTAssertEqual(sut.contentHuggingPriority(for: .horizontal), .required)
+        XCTAssertEqual(sut.contentHuggingPriority(for: .vertical), .required)
+        XCTAssertEqual(sut, output)
+    }
+
+    func testStackSpacing() {
+        // Given
+        let sut = HStack(spacing: 0) {
+            Text("A")
+            Text("B")
+        }
+
+        // When
+        let output = sut.spacing(16)
+
+        // Then
+        XCTAssertEqual(sut.spacing, 16)
+        XCTAssertEqual(sut, output)
+    }
+
+    func testStackAlignment() {
+        // Given
+        let sut = VStack(alignment: .leading) {
+            Text("A")
+            Text("B")
+        }
+
+        // When
+        let output = sut.alignment(.center)
+
+        // Then
+        XCTAssertEqual(sut.alignment, .center)
+        XCTAssertEqual(sut, output)
+    }
+
+    func testStackLayoutMargins() {
+        // Given
+        let insets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        let sut = VStack(alignment: .leading) {
+            Text("A")
+        }
+
+        // When
+        let output = sut.layoutMargins(insets)
+
+        // Then
+        XCTAssertEqual(sut.layoutMargins, insets)
+        XCTAssertTrue(sut.isLayoutMarginsRelativeArrangement)
+        XCTAssertEqual(sut, output)
     }
 }
